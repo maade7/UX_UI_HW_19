@@ -7,6 +7,7 @@ html {
   width: 100% !important;
   height: 100% !important;
   background: #343b42;
+  user-select: none;
 }
 h2 {
   margin: 0 0 20px 0;
@@ -201,18 +202,20 @@ hr {
 /* Header Section */
 
 .intro {
+    pointer-events:none;
   display: table;
+position: relative;
+overflow: hidden;
   width: 100%;
   padding: 0;
   text-align: center;
   background: url(../img/demo_top.jpg) no-repeat center;
-  /*background-color: transparent;*/
-  /*background: none;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
   background-attachment: fixed;
+z-index: 0;
 }
 
 .section-title.center {
@@ -233,9 +236,19 @@ hr {
   margin-top: 20px;
 }
 header .intro-text {
+    /* position: absolute; */
+
+left: 0;
+right: 0;
+text-align: center;
   padding-top: 200px;
   padding-bottom: 200px;
+   z-index: 10;
 }
+header .intro-text a {
+  pointer-events:all;
+}
+
 /* About Section */
 #about {
   padding: 120px 0;
@@ -408,6 +421,8 @@ ol.type li a:hover {
   padding: 5px;
   color: #e87e04;
 }
+
+
 /* Contact Section */
 #contact {
   padding: 120px 0 120px 0;
@@ -512,9 +527,12 @@ textarea.form-control {
   transition: all 0.3s;
 }
 
-.email:hover {
+.email:hover,.email:focus {
   color: #54d0dd;
 }
+
+
+
 
 .btn:active,
 .btn.active {
@@ -548,11 +566,6 @@ a:focus,
   color: #54d0dd;
 }
 
-/* @media (min-width: 768px) {
-	.about-text {
-		max-width: 498px;
-	}
-} */
 
 @media (max-width: 992px) {
   #about img {
@@ -652,14 +665,7 @@ iframe {
   text-align: center;
 }
 
-/*@media screen and (min-width: 768px) {*/
-/*	.modal:before {*/
-/*		display: inline-block;*/
-/*		vertical-align: middle;*/
-/*		content: " ";*/
-/*		height: 100%;*/
-/*	}*/
-/*}*/
+
 
 .modal:before {
   display: inline-block;
@@ -678,3 +684,15 @@ iframe {
 	display: none;
 }
 
+
+
+/* ---- particles.js container ---- */
+
+#particles-js{
+  position:absolute;
+  width: 100%;
+  height:100%;
+   pointer-events:all;
+mix-blend-mode: overlay;
+  z-index: -1;
+}
