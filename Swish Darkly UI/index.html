@@ -1,0 +1,3558 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<!--	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+
+	<title>Swish</title>
+</head>
+<body>
+
+<!--Nav Bar-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">
+		<img src="assets/images/UI%20Images/logo.png" height="30" alt="">
+	</a>
+	<div class="flex-row order-2 order-md-3">
+		<ul class="navbar-nav flex-row">
+			<li class="nav-item  dropdown">
+				<a class="nav-link dropdown-toggle btn btn-sm btn-secondary" href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					Layout
+				</a>
+				<div class="dropdown-menu dropdown-menu-right no-collapse" id="layout">
+					<a class="dropdown-item active" id="buildMode" href="#" >Build Mode</a>
+					<a class="dropdown-item" id="proofMode" href="#" >Proof Mode</a>
+					<a class="dropdown-item" id="playMode" href="#" >Play Mode</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link btn btn-sm" href="#" id="settings" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img class="svg-settings" src="assets/images/UI%20Images/settings-24px.svg" alt="">
+				</a>
+				<div class="dropdown-menu dropdown-menu-right no-collapse" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="#">
+						<div class="custom-control custom-switch">
+							<label>
+								<input type="checkbox" name="Tooltips" class="custom-control-input" checked="" id="tooltips">
+								<div class="custom-control-label">Tooltips</div>
+							</label>
+						</div>
+					</a>
+					<a class="dropdown-item" href="#">
+						<div class="custom-control custom-switch">
+							<label>
+								<input type="checkbox" name="posNum" class="custom-control-input" id="posNum">
+								<div class="custom-control-label">Player Position & Numbers</div>
+							</label>
+						</div>
+					</a>
+					<a class="dropdown-item" href="#">Regenerate All Previews</a>
+					<a class="dropdown-item" href="#">Reload Logos/Players</a>
+					<a class="dropdown-item" data-toggle="modal" data-target="#ticketModal" href="#">Enter Swish Ticket</a>
+					<a class="dropdown-item" href="#">Import/Export Rundowns</a>
+					<a class="dropdown-item" href="#">Swish Help Documents</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item disabled" href="#">Version: 7.1.0.28552</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse order-3 order-md-2" id="navbarNavDropdown">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#">Web: TSROSSRND09 <span class="light"></span></a>
+			</li>
+			<li class="nav-item">
+				<button class="btn btn-sm btn-secondary mt-1" type="button" data-placement="bottom">Logout</button>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#">User: Paralescu, Emanuel</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#">Show: Game Time</a>
+			</li>
+
+		</ul>
+	</div>
+</nav>
+
+<div class="panel-container-vertical">
+	<div class="panel-container panel-top">
+
+		<!--Take Items section-->
+		<div class="panel-left box border-class d-flex flex-wrap NoPadding">
+			<div class="align-content-start container-fluid NoPadding">
+				<div id="takeControl" class="toggleOffTake">
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+							<a class="nav-link active toggleOff" data-toggle="tab" href="#NewTemplate">New Template</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link toggleOff" data-toggle="tab" href="#QuickBuild">Quick Build</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="ClockControlTab" data-toggle="tab" href="#ClockControl">Clock Control</a>
+						</li>
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane show active" id="NewTemplate">
+							<div class="border-class-noLines">
+								<div class="row">
+									<div class="form-group col-sm-3">
+										<label for="GraphicType">Graphic Type</label>
+										<select class="form-control" id="GraphicType">
+											<option>Fullscreen</option>
+											<option>Lower 3rd</option>
+										</select>
+									</div>
+
+									<div class="form-group col-sm-3">
+										<label for="Graphic">Graphic</label>
+										<select class="form-control" id="Graphic">
+											<option>Fullscreen</option>
+											<option>Lower 3rd</option>
+										</select>
+									</div>
+
+									<form class="form-inline col-sm-2">
+										<button class="btn btn-sm btn btn-secondary" type="button" data-toggle="tooltip" data-placement="bottom" title="Create New Graphic">Create</button>
+									</form>
+
+									<div class="col-sm-2">
+									</div>
+									<form class="form-inline col-sm-2 d-flex justify-content-end">
+	<!--									<button class="btn btn-sm btn btn-secondary" type="button">Search</button>-->
+										<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Search Available Templates" aria-label="Left Align">
+											<img class="svg-menu" src="assets/images/UI%20Images/search-24px.svg" alt="">
+										</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="QuickBuild">
+							<div class="border-class-noLines">
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<label for="QuickBuildTemplates">Templates</label>
+										<select class="form-control" id="QuickBuildTemplates">
+											<option>Fullscreen</option>
+											<option>Lower 3rd</option>
+										</select>
+									</div>
+
+									<div class="form-group col-sm-2">
+										<label for="datepicker1">Game Date</label>
+										<input type="text" class="form-control datepicker" id="datepicker1" placeholder="Select Date">
+									</div>
+
+									<div class="form-group col-sm-2">
+										<label for="Game">Game</label>
+										<select class="form-control" id="Game">
+											<option>Fullscreen</option>
+											<option>Lower 3rd</option>
+										</select>
+									</div>
+
+									<form class="form-inline col-sm-2">
+										<button class="btn btn-sm btn btn-secondary" type="button" data-toggle="tooltip" data-placement="bottom" title="Create New Graphic">Create</button>
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="ClockControl">
+							<div class="border-class-noLines">
+								<div class="row">
+									<div class="form-group col-sm-2">
+										<label for="ControlClock">Clock</label>
+										<select class="form-control" id="ControlClock">
+											<option>Fullscreen</option>
+											<option>Lower 3rd</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="ClockDirection">Direction</label>
+										<select class="form-control" id="ClockDirection">
+											<option>Count Down</option>
+											<option>Count up</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-1">
+										<label for="HRS">HRS</label>
+										<select class="form-control" id="HRS">
+											<option>1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-1">
+										<label for="MIN">MIN</label>
+										<select class="form-control" id="MIN">
+											<option>1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-1">
+										<label for="SEC">SEC</label>
+										<select class="form-control" id="SEC">
+											<option>1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="ClockFormat">Format</label>
+										<select class="form-control" id="ClockFormat">
+											<option>NN:SS</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-inline col-sm-3 NoPadding d-flex justify-content-around">
+	<!--									<button class="btn btn-sm btn btn-secondary" type="button">Play</button>-->
+	<!--									<button class="btn btn-sm btn btn-secondary" type="button">Stop</button>-->
+	<!--									<button class="btn btn-sm btn btn-secondary" type="button">Reset</button>-->
+										<div>
+											<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Reset Clock" aria-label="Left Align">
+												<img class="svg-menu" src="assets/images/UI%20Images/replay-24px.svg" alt="">
+											</button>
+											<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Play Clock" aria-label="Left Align">
+												<img class="svg-menu" src="assets/images/UI%20Images/play_circle_filled-24px.svg" alt="">
+											</button>
+											<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Stop Clock" aria-label="Left Align">
+												<img class="svg-menu" src="assets/images/UI%20Images/stop_circle-24px.svg" alt="">
+											</button>
+										</div>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		<!--			Take Items-->
+				<div id="table-responsive">
+					<table class="table table-striped table-borderless" id="takeItems">
+						<thead>
+						<tr>
+							<th scope="col" style="width: 35px"></th>
+							<th scope="col" style="width: 50px">Take ID</th>
+							<th scope="col">Description</th>
+							<th scope="col" style="width: 50px" class="toggleOffTake" >Layer</th>
+							<th scope="col" style="width: 50px" class="toggleOffTake" >Buffer</th>
+							<th scope="col" style="width: 50px" class="toggleOffTake" >Status</th>
+							<th scope="col" style="width: 50px" class="label toggleOffTake pb-1 pr-0" >Select All</th>
+							<th scope="col" style="width: 50px" class="toggleOffTake" >
+								<div class="form-inline float-left custom-control custom-switch">
+									<label>
+										<input type="checkbox" class="custom-control-input ">
+										<div class="custom-control-label"></div>
+									</label>
+								</div>
+							</th>
+						</tr>
+
+						</thead>
+
+						<tbody class="sortable">
+
+						<!--Take Item group-->
+						<tr id="group1" class="group groupActive">
+							<td scope="row">
+								<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".group1" aria-label="Left Align">
+									<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+								</button>
+
+							</td>
+							<td scope="row">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td scope="row">
+								<input type="text" class="form-control" placeholder="Group1">
+							</td>
+							<td class="toggleOffTake">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td class="toggleOffTake">
+								<select class="form-control takeID">
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</td>
+							<td class="text toggleOffTake"><span>...</span></td>
+							<td class="text-center toggleOffTake">
+								<div class="btn-group" role="group" aria-label="...">
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+									</button>
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+									</button>
+								</div>
+							</td>
+							<td class="toggleOffTake">
+								<div class="form-inline float-left custom-control custom-switch">
+									<label>
+										<input type="checkbox" class="custom-control-input pull-left">
+										<div class="custom-control-label"></div>
+									</label>
+								</div>
+							</td>
+						</tr>
+
+							<!--Take Item-->
+							<tr class="take table-info show group1">
+								<td scope="row">
+									<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group1">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group1">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+
+						<!--Take Item group-->
+						<tr id="group2" class="group">
+							<td scope="row">
+								<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".group2" aria-label="Left Align">
+									<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+								</button>
+
+							</td>
+							<td scope="row">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td scope="row">
+								<input type="text" class="form-control" placeholder="Group1">
+							</td>
+							<td class="toggleOffTake">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td class="toggleOffTake">
+								<select class="form-control takeID">
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</td>
+							<td class="text toggleOffTake"><span>...</span></td>
+							<td class="text-center toggleOffTake">
+								<div class="btn-group" role="group" aria-label="...">
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+									</button>
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+									</button>
+								</div>
+							</td>
+							<td class="toggleOffTake">
+								<div class="form-inline float-left custom-control custom-switch">
+									<label>
+										<input type="checkbox" class="custom-control-input pull-left">
+										<div class="custom-control-label"></div>
+									</label>
+								</div>
+							</td>
+						</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group2">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+						<!--Take Item group-->
+						<tr id="group3" class="group">
+							<td scope="row">
+								<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".group3" aria-label="Left Align">
+									<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+								</button>
+
+							</td>
+							<td scope="row">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td scope="row">
+								<input type="text" class="form-control" placeholder="Group1">
+							</td>
+							<td class="toggleOffTake">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td class="toggleOffTake">
+								<select class="form-control takeID">
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</td>
+							<td class="text toggleOffTake"><span>...</span></td>
+							<td class="text-center toggleOffTake">
+								<div class="btn-group" role="group" aria-label="...">
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+									</button>
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+									</button>
+								</div>
+							</td>
+							<td class="toggleOffTake">
+								<div class="form-inline float-left custom-control custom-switch">
+									<label>
+										<input type="checkbox" class="custom-control-input pull-left">
+										<div class="custom-control-label"></div>
+									</label>
+								</div>
+							</td>
+						</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+							<!--Take Item-->
+							<tr class="take show group3">
+								<td scope="row">
+									<img class="svg-move-take handle float-right"  data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+								<td class="toggleOffTake">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td class="toggleOffTake">
+									<select class="form-control takeID">
+										<option>1</option>
+										<option>2</option>
+									</select>
+								</td>
+								<td class="text toggleOffTake"><span>...</span></td>
+								<td class="text-center toggleOffTake">
+									<div class="btn-group" role="group" aria-label="...">
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-2"  data-toggle="tooltip" data-placement="bottom" title="Duplicate Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+										</button>
+										<button type="button-group" class="btn btn-default btn-sm NoPadding pl-1"  data-toggle="tooltip" data-placement="bottom" title="Delete Take Item" aria-label="Left Align">
+											<img class="svg-move-take" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+										</button>
+									</div>
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+						<!--Take Item group-->
+						<tr id="group4" class="group">
+							<td scope="row">
+								<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".group4" aria-label="Left Align">
+									<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+								</button>
+
+							</td>
+							<td scope="row">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td scope="row">
+								<input type="text" class="form-control" placeholder="Group1">
+							</td>
+							<td class="toggleOffTake">
+								<input type="number" class="form-control takeID" placeholder="000">
+							</td>
+							<td class="toggleOffTake">
+								<select class="form-control takeID">
+									<option>1</option>
+									<option>2</option>
+								</select>
+							</td>
+							<td class="text toggleOffTake"><span>...</span></td>
+							<td class="text-center toggleOffTake">
+								<div class="btn-group" role="group" aria-label="...">
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/file_copy-24px.svg" alt="">
+									</button>
+									<button type="button-group" class="btn btn-default btn-sm NoPadding" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+									</button>
+								</div>
+							</td>
+							<td class="toggleOffTake">
+								<div class="form-inline float-left custom-control custom-switch">
+									<label>
+										<input type="checkbox" class="custom-control-input pull-left">
+										<div class="custom-control-label"></div>
+									</label>
+								</div>
+							</td>
+						</tr>
+							<tr class="take show placeholder group4"><td></td><td></td><td></td><td class="toggleOffTake"></td><td class="toggleOffTake"></td><td class="toggleOffTake"></td><td class="toggleOffTake"></td><td class="toggleOffTake"></td></tr>
+
+
+
+						</tbody>
+
+
+					</table>
+
+				</div>
+
+			</div>
+			<footer class="row align-content-end container-fluid flex-fill">
+				<nav class="col navbar navbar-dark bg-dark">
+					<div class="d-flex justify-content-start">
+						<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Create New Group" aria-label="Left Align">
+							<img class="svg-menu" src="assets/images/UI%20Images/create_new_folder-24px.svg" alt="">
+						</button>
+						<button class="btn btn-sm btn-secondary ml-2" type="button">Update Stats</button>
+					</div>
+					<div class="d-flex justify-content-end">
+						<a data-toggle="modal" data-target="#imageModal">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding float-right disabled" data-toggle="tooltip" data-placement="bottom" title="Download Selected Images" aria-label="Left Align">
+									<img class="svg-menu" src="assets/images/UI%20Images/img_down-24px.svg" alt="">
+							</button>
+						</a>
+						<a data-toggle="modal" data-target="#videoModal">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding float-right" data-toggle="tooltip" data-placement="bottom" title="Download Selected Movies" aria-label="Left Align">
+								<img class="svg-menu" src="assets/images/UI%20Images/mov_down-24px.svg" alt="">
+							</button>
+						</a>
+						<a data-toggle="modal" data-target="#xmlDownModal" data-backdrop="static">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding float-right" data-toggle="tooltip" data-placement="bottom" title="Download Selected Take Items" aria-label="Left Align">
+								<img class="svg-menu" src="assets/images/UI%20Images/xml_down-24px.svg" alt="">
+							</button>
+						</a>
+						<a data-toggle="modal" data-target="#xmlUpModal" data-backdrop="static">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding float-right" data-toggle="tooltip" data-placement="bottom" title="Import Take Items" aria-label="Left Align">
+								<img class="svg-menu" src="assets/images/UI%20Images/xml_up-24px.svg" alt="">
+							</button>
+						</a>
+
+						<button class="btn btn-sm btn-secondary ml-2" type="button" data-toggle="tooltip" data-placement="bottom" title="Copy Data From Current Take Item">Copy</button>
+						<button class="btn btn-sm btn-secondary disabled" type="button" data-toggle="tooltip" data-placement="bottom" title="Paste Copied Data To Current Take Item">Paste</button>
+
+						<a data-toggle="modal" data-target="#deleteModal" data-backdrop="static">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding float-right" data-toggle="tooltip" data-placement="bottom" title="Delete Selected Take Items" aria-label="Left Align">
+								<img class="svg-menu" src="assets/images/UI%20Images/delete_forever-24px.svg" alt="">
+							</button>
+						</a>
+
+					</div>
+
+				</nav>
+			</footer>
+
+		</div>
+
+		<!--Drag Bar side to side-->
+		<div id="separator" class="splitter"></div>
+
+		<!--Preview section-->
+		<div class="panel-right box border-class col d-flex flex-wrap NoPadding">
+			<div class="align-content-start flex-fill align-middle" id="preview">
+				<img src="assets/images/example_small.png" class="img-fluid" alt="Responsive image">
+			</div>
+			<footer class="row align-content-end container-fluid flex-fill" id="#previewNav">
+				<nav class="col navbar navbar-dark bg-dark" >
+
+					<div class="d-flex justify-content-start">
+
+						<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Refresh Preview"aria-label="Left Align">
+							<img class="svg-menu" src="assets/images/UI%20Images/refresh-24px.svg" alt="">
+						</button>
+						<a data-toggle="modal" data-target="#helpModal">
+							<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Help" aria-label="Left Align">
+								<img class="svg-menu" src="assets/images/UI%20Images/help-24px.svg" alt="">
+							</button>
+						</a>
+						<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Refresh Data Connection" aria-label="Left Align">
+							<img class="svg-menu" src="assets/images/UI%20Images/sync_problem-24px.svg" alt="">
+						</button>
+					</div>
+
+					<div class="d-flex justify-content-end">
+
+						<button class="btn btn-sm btn-secondary mr-2" type="button" data-toggle="tooltip" data-placement="bottom" title="Cue To Buffer">Cue</button>
+
+						<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Play Online" aria-label="Left Align">
+							<img class="svg-menu" src="assets/images/UI%20Images/play_circle_filled-24px.svg" alt="">
+						</button>
+						<button type="button-group" class="btn btn-default btn-sm NoPadding" data-toggle="tooltip" data-placement="bottom" title="Take Offline" aria-label="Left Align">
+							<img class="svg-menu" src="assets/images/UI%20Images/stop_circle-24px.svg" alt="">
+						</button>
+					</div>
+
+				</nav>
+			</footer>
+		</div>
+	</div>
+
+	<!--Drag Bar up and down-->
+	<div class="splitter-horizontal">
+	</div>
+
+<!--controller section-->
+
+	<div class="panel-bottom toggleOff">
+
+		<!--Topper section-->
+		<div class="box border-class">
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label class="mr-5" for="Topper">Topper</label>
+
+					<div class="d-inline custom-control custom-switch">
+						<label>
+							<input type="checkbox" class="custom-control-input">
+							<div class="custom-control-label">Breaking News</div>
+						</label>
+					</div>
+
+					<input type="text" class="form-control" id="Topper">
+				</div>
+
+				<div class="form-group col-md-4">
+					<label for="TopperBlack">Topper Black</label>
+					<input type="text" class="form-control" id="TopperBlack">
+				</div>
+			</div>
+		</div>
+
+		<!--Title bar section-->
+		<div class="box border-class NoPadding">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#titleBar">Title Bar</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#scoreBar">Score Bar</a>
+				</li>
+			</ul>
+
+			<div class="tab-content">
+
+					<div class="tab-pane show active" id="titleBar">
+						<div class="border-class-noLines">
+							<div class="row">
+								<div class="form-group col-md-5">
+
+									<label for="Topper">Title</label>
+									<input type="text" class="form-control" id="Title">
+
+									<label for="TopperBlack">Sub Title</label>
+									<input type="text" class="form-control" id="SubTitle">
+
+								</div>
+								<div class="col-sm-2 form-group">
+									<label for="Select">Title Logo</label>
+									<select class="form-control" id="Select">
+										<option>NONE</option>
+										<option>2</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="scoreBar">
+						<div class="border-class-noLines">
+							<div class="row">
+								<div class="form-group col-md-2">
+									<label for="Select">Away Team</label>
+									<select class="form-control" id="AwayTeam">
+										<option>NONE</option>
+										<option>2</option>
+									</select>
+
+									<label for="Select">Home Team</label>
+									<select class="form-control" id="HomeTeam">
+										<option>NONE</option>
+										<option>2</option>
+									</select>
+								</div>
+
+								<div class="form-group col-md-1">
+									<label for="Topper">Away Score</label>
+									<input type="text" class="form-control" id="AwayScore" placeholder="000">
+
+									<label for="TopperBlack">Home Score</label>
+									<input type="text" class="form-control" id="HomeScore" placeholder="000">
+								</div>
+
+								<div class="form-group col-md-2">
+
+									<label for="TopperBlack">Status</label>
+									<input type="text" class="form-control" id="Status">
+
+								</div>
+
+								<div class="col-sm-2 form-group">
+									<label for="Select">Title Logo</label>
+									<select class="form-control" id="Select">
+										<option>NONE</option>
+										<option>2</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+
+		<!--Stats Select section-->
+		<div class="box border-class">
+			<div class="row">
+
+				<div class="form-group col-sm-3">
+					<label for="Category 2">Category 1</label>
+					<button class="form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+						<div class="title">
+							<span class="dropdownText">Dropdown</span>
+							<span class="upsidedown caret float-right">&nbsp; ^</span>
+						</div>
+
+					</button>
+					<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+						<li class="dropdown-item" href="#"><a>NONE</a></li>
+						<li class="dropdown-item datepicker" href="#"><a class="ml-3">Game Date</a></li>
+						<li class="dropdown-submenu">
+							<a  class="dropdown-item" href="#">Season</a>
+							<ul class="dropdown-menu">
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" href="#">2020-21</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">AllStar</a></li>
+										<li><a class="dropdown-item" href="#">PostSeason</a></li>
+									</ul>
+								</li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" href="#">2019-20</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">AllStar</a></li>
+										<li><a class="dropdown-item" href="#">PostSeason</a></li>
+									</ul>
+								</li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" href="#">2018-19</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">AllStar</a></li>
+										<li><a class="dropdown-item" href="#">PostSeason</a></li>
+									</ul>
+								</li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" href="#">2017-18</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">AllStar</a></li>
+										<li><a class="dropdown-item" href="#">PostSeason</a></li>
+									</ul>
+								</li>
+								<li class="dropdown-submenu">
+									<a class="dropdown-item" href="#">2016-17</a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+										<li><a class="dropdown-item" href="#">PreSeason</a></li>
+										<li><a class="dropdown-item" href="#">AllStar</a></li>
+										<li><a class="dropdown-item" href="#">PostSeason</a></li>
+									</ul>
+								</li>
+
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a  class="dropdown-item" href="#">Career</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">PreSeason</a></li>
+								<li><a class="dropdown-item" href="#">RegularSeason</a></li>
+								<li><a class="dropdown-item" href="#">PreSeason</a></li>
+								<li><a class="dropdown-item" href="#">AllStar</a></li>
+								<li><a class="dropdown-item" href="#">PostSeason</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+
+
+				<div class="form-group col-sm-3">
+					<label for="Category 2">Category 2</label>
+					<select class="form-control" id="Category 2">
+
+						<optgroup label="None">
+							<option value="None">None</option>
+						</optgroup>
+						<optgroup label="GAME">
+							<option value="SELECT GAME DATE">SELECT GAME DATE</option>
+						<optgroup label="SEASON">
+							<option value="THIS SEASON">THIS SEASON</option>
+							<option value="2018-19">2018-19</option>
+							<option value="2017-18">2017-18</option>
+							<option value="2016-17">2016-17</option>
+							<option value="2015-16">2015-16</option>
+							<option value="2014-15">2014-15</option>
+						</optgroup>
+						<optgroup label="CAREER">
+							<option value="CAREER">CAREER</option>
+							<option value="PLAYOFFS CAREER">PLAYOFFS CAREER</option>
+							<option value="PRESEASON CAREER">PRESEASON CAREER</option>
+						</optgroup>
+						<optgroup label="PLAYOFFS">
+							<option value="PLAYOFFS">PLAYOFFS</option>
+							<option value="ROUND 1">ROUND 1</option>
+							<option value="ROUND 2">ROUND 2</option>
+							<option value="ROUND 3">ROUND 3</option>
+							<option value="FINALS">FINALS</option>
+							<option value="2018-19 PLAYOFFS">2018-19 PLAYOFFS</option>
+							<option value="2018-19 ROUND 1">2018-19 ROUND 1</option>
+							<option value="2018-19 ROUND 2">2018-19 ROUND 2</option>
+							<option value="2018-19 ROUND 3">2018-19 ROUND 3</option>
+							<option value="2018-19 FINALS">2018-19 FINALS</option>
+							<option value="2017-18 PLAYOFFS">2017-18 PLAYOFFS</option>
+							<option value="2017-18 ROUND 1">2017-18 ROUND 1</option>
+							<option value="2017-18 ROUND 2">2017-18 ROUND 2</option>
+							<option value="2017-18 ROUND 3">2017-18 ROUND 3</option>
+							<option value="2017-18 FINALS">2017-18 FINALS</option>
+							<option value="2016-17 PLAYOFFS">2016-17 PLAYOFFS</option>
+							<option value="2016-17 ROUND 1">2016-17 ROUND 1</option>
+							<option value="2016-17 ROUND 2">2016-17 ROUND 2</option>
+							<option value="2016-17 ROUND 3">2016-17 ROUND 3</option>
+							<option value="2016-17 FINALS">2016-17 FINALS</option>
+							<option value="2015-16 PLAYOFFS">2015-16 PLAYOFFS</option>
+							<option value="2015-16 ROUND 1">2015-16 ROUND 1</option>
+							<option value="2015-16 ROUND 2">2015-16 ROUND 2</option>
+							<option value="2015-16 ROUND 3">2015-16 ROUND 3</option>
+							<option value="2015-16 FINALS">2015-16 FINALS</option>
+							<option value="2014-15 PLAYOFFS">2014-15 PLAYOFFS</option>
+							<option value="2014-15 ROUND 1">2014-15 ROUND 1</option>
+							<option value="2014-15 ROUND 2">2014-15 ROUND 2</option>
+							<option value="2014-15 ROUND 3">2014-15 ROUND 3</option>
+							<option value="2014-15 FINALS">2014-15 FINALS</option>
+						</optgroup>
+						<optgroup label="PRE-SEASON">
+							<option value="THIS PRE-SEASON">THIS PRE-SEASON</option>
+							<option value="2018-19">2018-19</option>
+							<option value="2017-18">2017-18</option>
+							<option value="2016-17">2016-17</option>
+							<option value="2015-16">2015-16</option>
+							<option value="2014-15">2014-15</option>
+						</optgroup>
+						<optgroup label="SUMMER LEAGUE">
+							<option value="LAS VEGAS">LAS VEGAS</option>
+							<option value="SACRAMENTO">SACRAMENTO</option>
+							<option value="UTAH">UTAH</option>
+						</optgroup>
+					</select>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm">
+					<label for="Stat 1">Stat 1</label>
+					<select class="form-control" id="Stat 1">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 2">Stat 2</label>
+					<select class="form-control" id="Stat 2">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 3">Stat 3</label>
+					<select class="form-control" id="Stat 3">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 4">Stat 4</label>
+					<select class="form-control" id="Stat 4">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 5">Stat 5</label>
+					<select class="form-control" id="Stat 5">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 6">Stat 6</label>
+					<select class="form-control" id="Stat 6">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 7">Stat 7</label>
+					<select class="form-control" id="Stat 7">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 8">Stat 8</label>
+					<select class="form-control" id="Stat 8">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 9">Stat 9</label>
+					<select class="form-control" id="Stat 9">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+
+				<div class="form-group col-sm">
+					<label for="Stat 10">Stat 10</label>
+					<select class="form-control" id="Stat 10">
+						<option>NONE</option>
+						<option>2</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<!--Player / Logo section-->
+		<div class="row m-0">
+
+			<!--1-->
+			<div class="box border-player col">
+				<div class="row">
+					<div class="col-sm-12 NoPadding">
+						<ul class="nav nav-tabs">
+							<li class="nav-item col-sm-3">
+								<a class="nav-link disabled invisible" data-toggle="tab" href="#"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#logo">Logo</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#player">Display Headshot</a>
+									<a class="dropdown-item" data-toggle="tab" href="#No-Head">No Headshot</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Custom</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" type="file" data-toggle="tab" href="#">Load Image</a>
+									<a class="dropdown-item" data-toggle="tab" href="#">Load Video</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item disabled" href="#">FileName.jpg</a>
+								</div>
+							</li>
+						</ul>
+
+			<!--logo				-->
+						<div class="tab-content">
+							<div class="tab-pane show active border-class-stats" id="logo">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>1</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-logo" src="assets/images/UI%20Images/security-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Logo</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">City Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hLast">Team Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position"></label>
+										<input type="text" class="form-control invisible" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo"></label>
+										<select class="form-control invisible" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+			<!--player-->
+							<div class="tab-pane border-class-stats" id="player">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>1</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-player" src="assets/images/UI%20Images/person-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+			<!--No headshot-->
+							<div class="tab-pane border-class-stats" id="No-Head">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>1</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-noHead" src="assets/images/UI%20Images/admin_panel_settings-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+			<!--position and scale controls-->
+							<div class="border-class-stats">
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="Element">Element</label>
+										<select class="form-control" id="Element">
+											<option>Logo1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Position/Scale">Position/Scale</label>
+										<select class="form-control" id="Position/Scale">
+											<option>Vertical</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="Value">Value</label>
+										<input type="text" class="form-control" id="Value" placeholder="0">
+									</div>
+									<div class="form-group col-sm-2">
+										<div class="row border-class-btn">
+											<button type="button-group" class="btn btn-secondary btn-sm NoPadding btn-block" data-toggle="tooltip" data-placement="bottom" title="Reset Value" aria-label="Left Align">
+												<img class="svg-controls" src="assets/images/UI%20Images/undo-24px.svg" alt="">
+											</button>
+										</div>
+										<div class="row border-class-btn">
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Add To Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/add-24px.svg" alt="">
+												</button>
+											</div>
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Subtract From Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/remove-24px.svg" alt="">
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+			<!--stats-->
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="stat1" class="pt-4">Stats</label>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category1" class="justify-content-center">Category 1</label>
+										<input type="text" class="form-control" id="Category1">
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category2" class="justify-content-center">Category 2</label>
+										<input type="text" class="form-control" id="Category2">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+
+										<input type="text" class="form-control" id="stat1" placeholder="Stat 1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s1">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat2" placeholder="Stat 2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s2">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat3" placeholder="Stat 3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s3">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+			<!--2-->
+			<div class="box border-player col">
+				<div class="row">
+					<div class="col-sm-12 NoPadding">
+						<ul class="nav nav-tabs">
+							<li class="nav-item col-sm-3">
+								<a class="nav-link disabled invisible" data-toggle="tab" href="#"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#logo2">Logo</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#player2">Display Headshot</a>
+									<a class="dropdown-item" data-toggle="tab" href="#No-Head2">No Headshot</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Custom</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#">Load Image</a>
+									<a class="dropdown-item" data-toggle="tab" href="#">Load video</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item disabled" href="#">FileName.jpg</a>
+								</div>
+							</li>
+						</ul>
+
+						<!--logo				-->
+						<div class="tab-content">
+							<div class="tab-pane show active border-class-stats" id="logo2">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>2</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-logo" src="assets/images/UI%20Images/security-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Logo</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">City Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hLast">Team Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="h2.posnum"></label>
+										<input type="text" class="form-control invisible" id="h2.posnum" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo"></label>
+										<select class="form-control invisible" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--player-->
+							<div class="tab-pane border-class-stats" id="player2">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>2</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-player" src="assets/images/UI%20Images/person-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<!--No headshot-->
+							<div class="tab-pane border-class-stats" id="No-Head2">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>2</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-noHead" src="assets/images/UI%20Images/admin_panel_settings-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--position and scale controls-->
+							<div class="border-class-stats">
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="Element">Element</label>
+										<select class="form-control" id="Element">
+											<option>Logo1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Position/Scale">Position/Scale</label>
+										<select class="form-control" id="Position/Scale">
+											<option>Vertical</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="Value">Value</label>
+										<input type="text" class="form-control" id="Value" placeholder="0">
+									</div>
+									<div class="form-group col-sm-2">
+										<div class="row border-class-btn">
+											<button type="button-group" class="btn btn-secondary btn-sm NoPadding btn-block" data-toggle="tooltip" data-placement="bottom" title="Reset Value" aria-label="Left Align">
+												<img class="svg-controls" src="assets/images/UI%20Images/undo-24px.svg" alt="">
+											</button>
+										</div>
+										<div class="row border-class-btn">
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Add To Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/add-24px.svg" alt="">
+												</button>
+											</div>
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Subtract From Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/remove-24px.svg" alt="">
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--stats-->
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="stat1" class="pt-4">Stats</label>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category1" class="justify-content-center">Category 1</label>
+										<input type="text" class="form-control" id="Category1">
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category2" class="justify-content-center">Category 2</label>
+										<input type="text" class="form-control" id="Category2">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+
+										<input type="text" class="form-control" id="stat1" placeholder="Stat 1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s1">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat2" placeholder="Stat 2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s2">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat3" placeholder="Stat 3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s3">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<!--3-->
+			<div class="box border-player col">
+				<div class="row">
+					<div class="col-sm-12 NoPadding">
+						<ul class="nav nav-tabs">
+							<li class="nav-item col-sm-3">
+								<a class="nav-link disabled invisible" data-toggle="tab" href="#"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#logo3">Logo</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#player3">Display Headshot</a>
+									<a class="dropdown-item" data-toggle="tab" href="#No-Head3">No Headshot</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Custom</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#">Load Image</a>
+									<a class="dropdown-item" data-toggle="tab" href="#">Load video</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item disabled" href="#">FileName.jpg</a>
+								</div>
+							</li>
+						</ul>
+
+						<!--logo				-->
+						<div class="tab-content">
+							<div class="tab-pane show active border-class-stats" id="logo3">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>3</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-logo" src="assets/images/UI%20Images/security-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Logo</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">City Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hLast">Team Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position"></label>
+										<input type="text" class="form-control invisible" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo"></label>
+										<select class="form-control invisible" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--player-->
+							<div class="tab-pane border-class-stats" id="player3">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>3</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-player" src="assets/images/UI%20Images/person-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<!--No headshot-->
+							<div class="tab-pane border-class-stats" id="No-Head3">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>3</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-noHead" src="assets/images/UI%20Images/admin_panel_settings-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--position and scale controls-->
+							<div class="border-class-stats">
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="Element">Element</label>
+										<select class="form-control" id="Element">
+											<option>Logo1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Position/Scale">Position/Scale</label>
+										<select class="form-control" id="Position/Scale">
+											<option>Vertical</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="Value">Value</label>
+										<input type="text" class="form-control" id="Value" placeholder="0">
+									</div>
+									<div class="form-group col-sm-2">
+										<div class="row border-class-btn">
+											<button type="button-group" class="btn btn-secondary btn-sm NoPadding btn-block" data-toggle="tooltip" data-placement="bottom" title="Reset Value" aria-label="Left Align">
+												<img class="svg-controls" src="assets/images/UI%20Images/undo-24px.svg" alt="">
+											</button>
+										</div>
+										<div class="row border-class-btn">
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Add To Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/add-24px.svg" alt="">
+												</button>
+											</div>
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Subtract From Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/remove-24px.svg" alt="">
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--stats-->
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="stat1" class="pt-4">Stats</label>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category1" class="justify-content-center">Category 1</label>
+										<input type="text" class="form-control" id="Category1">
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category2" class="justify-content-center">Category 2</label>
+										<input type="text" class="form-control" id="Category2">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+
+										<input type="text" class="form-control" id="stat1" placeholder="Stat 1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s1">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat2" placeholder="Stat 2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s2">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat3" placeholder="Stat 3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s3">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+			<!--4-->
+			<div class="box border-player col">
+				<div class="row">
+					<div class="col-sm-12 NoPadding">
+						<ul class="nav nav-tabs">
+							<li class="nav-item col-sm-3">
+								<a class="nav-link disabled invisible" data-toggle="tab" href="#"></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" data-toggle="tab" href="#logo4">Logo</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Player</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#player4">Display Headshot</a>
+									<a class="dropdown-item" data-toggle="tab" href="#No-Head4">No Headshot</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Custom</a>
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" data-toggle="tab" href="#">Load Image</a>
+									<a class="dropdown-item" data-toggle="tab" href="#">Load video</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item disabled" href="#">FileName.jpg</a>
+								</div>
+							</li>
+						</ul>
+
+						<!--logo				-->
+						<div class="tab-content">
+							<div class="tab-pane show active border-class-stats" id="logo4">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>4</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-logo" src="assets/images/UI%20Images/security-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Logo</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">City Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hLast">Team Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position"></label>
+										<input type="text" class="form-control invisible" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo"></label>
+										<select class="form-control invisible" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--player-->
+							<div class="tab-pane border-class-stats" id="player4">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>4</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-player" src="assets/images/UI%20Images/person-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<!--No headshot-->
+							<div class="tab-pane border-class-stats" id="No-Head4">
+
+								<div class="row">
+									<div class="col-sm-3 p-sm-1 SVG-NUMBER">
+										<div class="border-number text-center">
+											<span>4</span>
+										</div>
+										<div class="text-center">
+											<img class="svg-noHead" src="assets/images/UI%20Images/admin_panel_settings-24px.svg" alt="">
+										</div>
+									</div>
+
+									<div class="col-sm-9 form-group">
+										<label for="Select">Select Player</label>
+										<select class="form-control" id="Select">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row NoPadding">
+									<div class="form-group col-sm-6">
+										<label for="hfirst">First Name</label>
+										<input type="text" class="form-control" id="hfirst">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="hlast">Last Name</label>
+										<input type="text" class="form-control" id="hlast">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-6">
+										<label for="Number & Position">Number & Position</label>
+										<input type="text" class="form-control" id="Number & Position" placeholder="23|F">
+									</div>
+									<div class="form-group col-sm-6">
+										<label for="Player Logo">Player Logo</label>
+										<select class="form-control" id="Player Logo">
+											<option>NONE</option>
+											<option>2</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<!--position and scale controls-->
+							<div class="border-class-stats">
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="Element">Element</label>
+										<select class="form-control" id="Element">
+											<option>Logo1</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Position/Scale">Position/Scale</label>
+										<select class="form-control" id="Position/Scale">
+											<option>Vertical</option>
+											<option>2</option>
+										</select>
+									</div>
+									<div class="form-group col-sm-2">
+										<label for="Value">Value</label>
+										<input type="text" class="form-control" id="Value" placeholder="0">
+									</div>
+									<div class="form-group col-sm-2">
+										<div class="row border-class-btn">
+											<button type="button-group" class="btn btn-secondary btn-sm NoPadding btn-block" data-toggle="tooltip" data-placement="bottom" title="Reset Value" aria-label="Left Align">
+												<img class="svg-controls" src="assets/images/UI%20Images/undo-24px.svg" alt="">
+											</button>
+										</div>
+										<div class="row border-class-btn">
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Add To Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/add-24px.svg" alt="">
+												</button>
+											</div>
+											<div class="form-group col-sm-6 pr-1">
+												<button class="btn btn-sm btn-secondary NoPadding btn-block" type="button" data-toggle="tooltip" data-placement="bottom" title="Subtract From Value">
+													<img class="svg-controls" src="assets/images/UI%20Images/remove-24px.svg" alt="">
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--stats-->
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<label for="stat1" class="pt-4">Stats</label>
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category1" class="justify-content-center">Category 1</label>
+										<input type="text" class="form-control" id="Category1">
+									</div>
+									<div class="form-group col-sm-4">
+										<label for="Category2" class="justify-content-center">Category 2</label>
+										<input type="text" class="form-control" id="Category2">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+
+										<input type="text" class="form-control" id="stat1" placeholder="Stat 1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s1">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s1">
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat2" placeholder="Stat 2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s2">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s2">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control disabled" id="stat3" placeholder="Stat 3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c1s3">
+									</div>
+									<div class="form-group col-sm-4">
+										<input type="text" class="form-control" id="h1c2s3">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+
+
+
+
+		</div>
+
+		<!--Free edit / miscellaneous section-->
+		<div class="box border-class">
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label for="Topic1">Topic 1</label>
+					<input type="text" class="form-control" id="Topic1">
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="Topic2">Topic 2</label>
+					<input type="text" class="form-control" id="Topic2">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-3">
+					<label for="Note1">Note 1</label>
+					<textarea class="form-control" id="Note1" rows="3"></textarea>
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="Note2">Note 2</label>
+					<textarea class="form-control" id="Note2" rows="3"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-4">
+					<label for="Footer">Footer</label>
+					<input type="text" class="form-control" id="Footer">
+				</div>
+				<div class="form-inline col-md-3">
+					<div class="custom-control custom-switch">
+						<label>
+							<input type="checkbox" class="custom-control-input" checked="">
+							<div class="custom-control-label">Background Visibility</div>
+						</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<!--Modals-->
+
+<div class="modal" id="imageModal">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" >Take Item Image Download</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="border-class-noLines">
+					<div class="row pb-0">
+						<p class="DLXPID col-2 m-0">Take ID</p>
+						<p class="DLName col-8 m-0">Description</p>
+						<p class="DLStatus col-2 m-0">Status</p>
+					</div>
+				</div>
+
+
+				<div id="MMID_Download_List" class="border-class">
+					<div id="DLSwishID_1215359" class="DL_Row row">
+						<p id="DLXPID_1215359" class="col-2 m-0">1478</p>
+						<p id="DLName_1215359" class="col-8 m-0">Lower Third | Stat</p>
+						<p id="DLStatus_1215359" class="col-2 m-0">Ready</p>
+					</div>
+					<div id="DL_URL_Div_1215359" class="DL_URL_Row row">
+						<a id="DL_URL_Link_1215359" class="DL_a_Link"  href="http://10.185.165.143/SS_DATA/User_12/Center%20Court/Lower%20Third_Stat_20200706163341907.png">http://10.185.165.143/SS_DATA/User_12/Center%20Court/Lower%20Third_Stat_20200706163341907.png</a>
+					</div>
+				</div>
+
+				<div class="form-group col-12">
+					<textarea class="form-control" id="TA_ForClipboard" spellcheck="false" rows="10" disabled
+					>List of Links for optional Copy and Paste: Links will be available for a limited time...
+					</textarea>
+					<label>Downloads should begin automatically as they finish rendering.</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="videoModal">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" >Take Item Movie Download</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="border-class-noLines">
+					<div class="row pb-0">
+						<p class="DLXPID col-2 m-0">Take ID</p>
+						<p class="DLName col-8 m-0">Description</p>
+						<p class="DLStatus col-2 m-0">Status</p>
+					</div>
+				</div>
+
+
+				<div id="MMID_Download_List" class="border-class">
+					<div id="DLSwishID_1215359" class="DL_Row row">
+						<p id="DLXPID_1215359" class="col-2 m-0">1478</p>
+						<p id="DLName_1215359" class="col-8 m-0">Lower Third | Stat</p>
+						<p id="DLStatus_1215359" class="col-2 m-0">Ready</p>
+					</div>
+					<div id="DL_URL_Div_1215359" class="DL_URL_Row row">
+						<a id="DL_URL_Link_1215359" class="DL_a_Link"  href="http://10.185.165.143/SS_DATA/User_12/Center%20Court/Lower%20Third_Stat_20200706163341907.png">http://10.185.165.143/SS_DATA/User_12/Center%20Court/Lower%20Third_Stat_20200706163341907.png</a>
+					</div>
+				</div>
+
+				<div class="form-group col-12">
+					<textarea class="form-control" id="TA_ForClipboard" spellcheck="false" rows="10" disabled
+					>List of Links for optional Copy and Paste: Links will be available for a limited time...
+					</textarea>
+					<label>Downloads should begin automatically as they finish rendering.</label>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="xmlDownModal">
+	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" >Take Item Download</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="xportSelectModal">
+
+					<div class="xportRadioSelect border-class-noLines">
+						<p id="xportSummary1">Please select the format for your export.</p>
+
+
+							<div class="liForXportSelect">
+								<input type="radio" id="option_XML_ONLY" class="radioHidden" name="xportStyle" value="XML_ONLY" checked="">
+								<label class="xportRadioLabel" for="option_XML_ONLY">Standard Swish XML Export</label>
+
+								<div class="specialRadio"></div>
+							</div>
+
+							<div class="liForXportSelect">
+								<input type="radio" id="option_XML_CUSTOM_IMAGES" class="radioHidden" name="xportStyle" value="XML_CUSTOM_IMAGES">
+								<label class="xportRadioLabel" for="option_XML_CUSTOM_IMAGES">Enhanced* - Swish XML plus Custom Images (slower)</label>
+
+								<div class="specialRadio"><div class="inside"></div></div>
+							</div>
+
+							<div class="liForXportSelect" id="FastProject_Rad">
+								<input type="radio" id="option_FAST_SWAP_PROJECT" class="radioHidden" name="xportStyle" value="FAST_SWAP_PROJECT">
+								<label class="xportRadioLabel" for="option_FAST_SWAP_PROJECT">Fast Swap Project - ALL take items plus Xpression Project (24 hrs validity)</label>
+
+								<div class="specialRadio"><div class="inside"></div></div>
+							</div>
+
+
+							<label class="pt-3">*If you are exporting for an 'on the road' show, please select an option that includes 'Custom Images'.</label>
+
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" id="xportSelectOKBtn" onclick="Do_Export_By_Type();">Export</button>
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="xportSelectCancelBtn" onclick="xport_Select_Cancel_Action();">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="xmlUpModal">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title pr-5">Take Item Import</h5>
+				<h5 class="modal-title alert-danger" >Please uncheck or renumber conflicts. Total Conflicts: 1</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div>
+					<div id="importOverviewKey" class="row pr-4 pl-4">
+						<div class="importSelect col-4">
+							<input id="import_chkUseBestFit" type="checkbox" onchange="rememberBestFit(this)" checked="">
+							<label id="labelFor_import_chkUseBestFit" class="importTakeID">Use Best Fit Matching</label>
+						</div>
+						<div class="col-3">
+							<label id="importedLoadedTotal">Total Loaded: 1</label>
+						</div>
+						<div class="col-5">
+							<label id="importedSelectedTotal">Total Selected: 0</label>
+						</div>
+					</div>
+					<div class="importTake">
+						<table class="table table-striped table-borderless table-dark" id="import">
+							<thead>
+							<tr>
+								<th scope="col" style="width: 10px"></th>
+								<th scope="col" style="width: 50px">Take ID</th>
+								<th scope="col">Description
+									<label class="float-right">Select All</label>
+								</th>
+								<th scope="col" style="width: 50px" class="toggleOffTake" >
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input ">
+											<div class="custom-control-label form-inline"></div>
+										</label>
+									</div>
+								</th>
+							</tr>
+
+							</thead>
+
+							<tbody class="sortable2">
+
+							<!--Take Item group-->
+							<tr id="takeGroup1" class="group">
+								<td scope="row">
+									<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".takeGroup1" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+									</button>
+
+								</td>
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td scope="row">
+									<input type="text" class="form-control" placeholder="Group1">
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup1 alert-danger">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup1">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup1">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+							<!--Take Item group-->
+							<tr id="takeGroup2" class="group">
+								<td scope="row">
+									<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".takeGroup2" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+									</button>
+
+								</td>
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td scope="row">
+									<input type="text" class="form-control" placeholder="Group1">
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup2">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup2">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup2">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+							<!--Take Item group-->
+							<tr id="takeGroup3" class="group">
+								<td scope="row">
+									<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".takeGroup3" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+									</button>
+
+								</td>
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td scope="row">
+									<input type="text" class="form-control" placeholder="Group1">
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup3">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup3">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+								<!--Take Item-->
+								<tr class="take show takeGroup3">
+									<td scope="row">
+										<img class="svg-move-take handle float-right" data-toggle="tooltip" data-placement="bottom" title="Reorder Take Item" src="assets/images/UI%20Images/swap_vert-24px.svg" alt="">
+									</td>
+									<td scope="row">
+										<input type="number" class="form-control takeID" placeholder="000">
+									</td>
+									<td class="text"><span>FULLSCREEN | STAT | JAMES | LEBRON | THE KING COMES HOME | RETURN OF THE CHAMP</span></td>
+									<td class="toggleOffTake">
+										<div class="form-inline float-left custom-control custom-switch">
+											<label>
+												<input type="checkbox" class="custom-control-input pull-left">
+												<div class="custom-control-label"></div>
+											</label>
+										</div>
+									</td>
+								</tr>
+
+							<!--Take Item group-->
+							<tr id="takeGroup4" class="group">
+								<td scope="row">
+									<button type="button" class="btn btn-default btn-sm NoPadding groupFolder" data-toggle="collapse" data-target=".takeGroup4" aria-label="Left Align">
+										<img class="svg-move-group" src="assets/images/UI%20Images/folder_open-24px.svg" alt="">
+									</button>
+
+								</td>
+								<td scope="row">
+									<input type="number" class="form-control takeID" placeholder="000">
+								</td>
+								<td scope="row">
+									<input type="text" class="form-control" placeholder="Group1">
+								</td>
+								<td class="toggleOffTake">
+									<div class="form-inline float-left custom-control custom-switch">
+										<label>
+											<input type="checkbox" class="custom-control-input pull-left">
+											<div class="custom-control-label"></div>
+										</label>
+									</div>
+								</td>
+							</tr>
+								<tr class="take show placeholder takeGroup4"><td></td><td></td><td></td><td></td></tr>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+
+				<div class="row pr-4 pl-4">
+					<div class="form-group col-sm-3 pr-2">
+						<label for="importRangeSubmitBtn">Renumber ALL, value to add:</label>
+						<input type="number" value="0" onkeydown="refocus_To_Top_XML_Import_If_Tab(event)" class="form-control" id="importRangeSubmitBtn" onclick="massChangeImportTegIds()" placeholder="0">
+					</div>
+					<div class="form-group col-sm-3 pt-3">
+						<button id="importRangeSubmitBtn" type="button" class="btn btn-sm btn-secondary" onclick="massChangeImportTegIds()" class="">Renumber</button>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+
+				<label type="button" class="btn btn-sm btn-secondary" >Choose File
+					<input type="file" accept=".swish, .zip" id="importXMLFileinput" hidden>
+				</label>
+				<button type="button" class="btn btn-sm btn-secondary" id="importXMLOKbtn" onclick="importXMLData();" class="locked">Import</button>
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" id="fileInputCancelBtn">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="helpModal">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" >Take Item Help Menu</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group col-12 border-class-noLines">
+					<textarea class="form-control" id="swishHelp_Custom_Message_TA" spellcheck="false" rows="20" disabled>
+Description:   This will allow you to move a graphics
+independently to any position you desire.
+
+-	move_graphic_x will allow you to move a graphic horizontally
+from the current position.
+
+-	move_graphic_y will allow you to move a graphic vertically
+from the current position.
+
+Example – If you set move move_graphic_x to a value of -100 it
+will move 100 pixels horizontaly to the left. if you set move
+move_graphic_x to a value of 100 it will move 100 pixels
+horizontaly to the right.
+
+
+Global Move
+Description:   This will allow you to move all lower third
+graphics for a specific show. Only system administrators can use
+this feature as this will move all lower thirds for that show at
+that moment. To change the global position for all lower thirds
+you must be at the swish login screen. Once there click on the
+create graphics button and dropdown list will appear. Select
+“Manage Graphics Settings” from the drop-down list. Simply
+select you show and change the X and Y settings to adjust
+horizontal and vertical position.
+					</textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="ticketModal" ondrop="dropFileForETT(event)" ondragover="ETTallowDrop(event)" >
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Submit Swish Ticket</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<div class="border-class-noLines">
+
+					<div class="form-group">
+						<label for="ETTUsersName">Name</label>
+						<input type="text" id="ETTUsersName" class="form-control" onkeyup="forceCharacterLength(this, 50)" onchange="forceCharacterLength(this, 50)" placeholder="Your name">
+					</div>
+
+					<div class="form-group">
+						<label for="ETTUsersEmail">Email</label>
+						<input type="text" id="ETTUsersEmail" class="form-control" onkeyup="forceCharacterLength(this, 70)" onchange="forceCharacterLength(this, 70)" placeholder="Your email address">
+					</div>
+
+					<div class="form-group">
+						<label for="ETTSubject">Subject</label>
+						<input type="text" id="ETTSubject" class="form-control" onkeyup="forceCharacterLength(this, 100)" onchange="forceCharacterLength(this, 100)" placeholder="Ticket title">
+					</div>
+
+					<div class="form-group">
+						<label for="ETTMessage">Message</label>
+						<textarea id="ETTMessage" rows="10" class="form-control" onkeyup="forceCharacterLength(this, 3000)" onchange="forceCharacterLength(this, 3000)" placeholder="Describe your issue or Swish request here."></textarea>
+					</div>
+
+
+
+					<div id="ETTDragDropArea">
+						<p id="ETTDropMessage">Drag-drop files here to attach (one at a time)</p>
+					</div>
+
+					<div id="ETTFilesShown" class="ETTFullWidthItem" style="display: none;">
+						<ul id="ETTFilesUL"></ul>
+					</div>
+
+					<div class="form-group">
+						<input id="chkETTSendConfirmation" type="checkbox">
+						<label id="labelFor_chkETTSendConfirmation" class="chkLabelETT">Send me a confirmation email.</label>
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" onclick="sendEmailToTrello()">Submit</button>
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal" id="deleteModal">
+	<div class="modal-dialog modal-dialog-centered modal-md" role="document">
+		<div class="modal-content">
+			<div class="modal-header alert-danger">
+				<h5 class="modal-title" >Are you sure you wish to delete?</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+					<div class="border-class-noLines">
+
+						<p>Please Note: If you delete any groups, the Take Items in those groups will be deleted whether or not those grouped Take Items are currently selected.</p>
+					</div>
+				</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" >Delete</button>
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+<script
+		src="https://code.jquery.com/jquery-3.5.1.js"
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+		crossorigin="anonymous"></script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui-sortable@1/jquery-ui.min.js"></script>
+
+
+
+
+<!--Js-->
+<script src="assets/javascript/app.js"></script>
+</body>
+</html>
