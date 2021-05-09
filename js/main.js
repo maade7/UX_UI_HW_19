@@ -245,10 +245,10 @@ particlesJS('particles-js',
     },
     "line_linked": {
       "enable": true,
-      "distance": 200,
+      "distance": 175,
       "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1.763753266952075
+      "opacity": .5,
+      "width": 1.75
     },
     "move": {
       "enable": true,
