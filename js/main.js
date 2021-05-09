@@ -56,7 +56,7 @@ function main() {
                 queue: false
             }
         });
-        AOS.refresh();
+           AOS.refresh();
         $('.cat a').click(function() {
             $('.cat .active').removeClass('active');
             $(this).addClass('active');
@@ -72,8 +72,6 @@ function main() {
             AOS.refresh();
             return false;
         });
-
-        
     });
 	
 
@@ -84,6 +82,7 @@ function main() {
     });
 
     AOS.refresh();
+
 
 }());
 
@@ -171,8 +170,23 @@ AOS.init({
 });
 
 
-AOS.refresh();
 
+
+window.onresize = function(event) {
+  var $container = $('.portfolio-items');
+        $container.isotope({
+            filter: '*',
+            animationOptions: {
+                duration: 750,
+                easing: 'linear',
+                queue: false
+            }
+        });
+    
+    $('.vp-center').css({'display':'block'});
+    AOS.refresh();
+    // console.log('resized');
+};
 
 // particlesJS.load('js/particles-js', 'css/particles.json', function() {
 //   console.log('particles.js loaded - callback');
