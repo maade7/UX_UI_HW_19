@@ -147,6 +147,8 @@ $('.modal').on('hidden.bs.modal', function () {
 });
 
 
+
+// Scroll reveal...............................
 AOS.init({
    // Global settings:
   disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -222,7 +224,7 @@ particlesJS('particles-js',
       }
     },
     "opacity": {
-      "value": 0.47300655795532925,
+      "value": 0.5,
       "random": true,
       "anim": {
         "enable": false,
@@ -232,12 +234,12 @@ particlesJS('particles-js',
       }
     },
     "size": {
-      "value": 4.008530152163807,
+      "value": 4,
       "random": true,
       "anim": {
         "enable": true,
-        "speed": 2.4362316369040355,
-        "size_min": 0.8120772123013452,
+        "speed": 2.5,
+        "size_min": 0.8,
         "sync": false
       }
     },
@@ -255,11 +257,11 @@ particlesJS('particles-js',
       "random": false,
       "straight": false,
       "out_mode": "bounce",
-      "bounce": true,
+      "bounce": false,
       "attract": {
         "enable": true,
-        "rotateX": 2000,
-        "rotateY": 2000
+        "rotateX": 500,
+        "rotateY": 500
       }
     }
   },
