@@ -18,10 +18,13 @@ const config = {
     projectId: "demosite-be27a",
     storageBucket: "demosite-be27a.appspot.com",
     messagingSenderId: "305343839498",
-    appId: "1:305343839498:web:ae6eeef932f3ff85"
+    appId: "1:305343839498:web:ae6eeef932f3ff85",
+    measurementId: "G-JZXSN6EZXS"
 };
 
-
+// Initialize Firebase
+firebase.initializeApp(config);
+firebase.analytics();
 //create a functions to push
 function firebasePush() {
 
